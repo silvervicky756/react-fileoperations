@@ -1,24 +1,17 @@
 import React from "react";
 import "../styles/table.css";
+import { AgGridReact } from "ag-grid-react";
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-balham.css";
 
-const Table = ({ data }) => {
+const Table = ({ rowData, columnDefs }) => {
   return (
-    <>
-      {data.map((row) => (
-        <Row row={row}></Row>
-      ))}
-    </>
-  );
-};
-
-const Row = ({ row }) => {
-  const cells = row.split(",");
-  return (
-    <tr>
-      {cells.map((cell) => (
-        <td>{cell}</td>
-      ))}
-    </tr>
+    <div
+      className="ag-theme-balham"
+      style={{ height: 400, width: "80%", alignContent: "center" }}
+    >
+      <AgGridReact rowData={rowData} columnDefs={columnDefs} />
+    </div>
   );
 };
 
